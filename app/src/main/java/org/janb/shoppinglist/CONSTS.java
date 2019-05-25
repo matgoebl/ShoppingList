@@ -2,7 +2,7 @@ package org.janb.shoppinglist;
 
 public class CONSTS {
 //TODO MIN REQUIRED
-    public static final int MINIMUM_REQUIRED_BACKEND_VERSION = 1;
+    public static final int MINIMUM_REQUIRED_BACKEND_VERSION = 2;
 
     public static final int TAG_LIST = 1;
     public static final int TAG_FAVORITES = 2;

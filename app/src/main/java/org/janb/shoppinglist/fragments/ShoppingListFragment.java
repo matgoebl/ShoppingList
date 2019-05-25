@@ -109,13 +109,7 @@ public class ShoppingListFragment extends ListFragment implements SwipeRefreshLa
                                 String dialogCountText = ((EditText) dialog.findViewById(R.id.dialog_update_count)).getText().toString();
                                 String dialogTitleText = ((EditText) dialog.findViewById(R.id.dialog_update_title)).getText().toString();
                                 if (!dialogCountText.isEmpty() && (!dialogCountText.equals(openedItem.getItemCountString()) || !dialogTitleText.equals(openedItem.getItemTitle()))) {
-                                    saveItem(dialogTitleText, dialogCountText, "false");
-                                }
-                                if (!dialogTitleText.equals(openedItem.getItemTitle())) {
-                                    List<ShoppingListItem> delItems = new ArrayList();
-                                    delItems.add(0 , new ShoppingListItem(item.getItemTitle(), 1));
-                                    Gson gson = new Gson();
-                                    deleteMultiple(gson.toJson(delItems));
+                                    saveItem(dialogTitleText, dialogCountText, "false", openedItem.getItemTitle());
                                 }
                             }
                         })
@@ -178,12 +172,15 @@ public class ShoppingListFragment extends ListFragment implements SwipeRefreshLa
         getActivity().getMenuInflater().inflate(R.menu.menu_main, menu);
     }
 
-    private void saveItem(String itemTitle, String itemCount, String itemChecked) {
+    private void saveItem(String itemTitle, String itemCount, String itemChecked, String itemTitleOld) {
         setRefreshing();
         api = new ListAPI(context);
         api.setOnResultsListener(this);
         ListAPI.setFunction(ListAPI.FUNCTION_SAVEITEM);
-        api.execute(itemTitle, String.valueOf(itemCount), itemChecked);
+        api.execute(itemTitle, String.valueOf(itemCount), itemChecked, itemTitleOld);
+    }
+    private void saveItem(String itemTitle, String itemCount, String itemChecked) {
+        saveItem(itemTitle, itemCount, itemChecked, itemTitle);
     }
     private void saveMultiple(String jsonData) {
         setRefreshing();

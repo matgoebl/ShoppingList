@@ -12,6 +12,16 @@
     <!--TODO Version Description-->
     <string name="aboutLibraries_description_special3_text" translatable="false">
         <![CDATA[
+        <i><b>Version 1.5 (Matthias Goebl)</b></i><br />
+        - Hide numbers used for ordering list entries ("1. ", "2. ",..), but not for headings<br />
+        - Interpret list entries containing "***" as headlines and show them in bold face and prevent unticking<br />
+        - Added option to rename and delete a selected item<br />
+        - Added option to add item by scanning a qr code (needs backend support)<br />
+        - Option to hide checked items<br />
+        - Menu access to cached list, save checkmarks in cached list<br />
+        - Added option to scan QR code using the front camera (for a wall mounted tablet)<br />
+        - Added save and update of checked attribute<br />
+        <br />
         <i><b>Version 1.4</b></i><br />
         - Quick setup with QR Code<br />
           (App "Barcode Scanner" required, also available in FDroid)<br />
